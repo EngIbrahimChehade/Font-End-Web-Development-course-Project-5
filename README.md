@@ -7,7 +7,7 @@
 - [License](#license)
 
 # Project Title
-Evaluate a news article with Natural Language Processing
+Travel app
 [(Back to top)](#table-of-contents)
 
 # Description

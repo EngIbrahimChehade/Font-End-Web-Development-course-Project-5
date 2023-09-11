@@ -1,3 +1,7 @@
+body{
+    background-color: red;
+}
+
 form {
     border: 1px solid #545454;
     border-radius: 3px;
@@ -9,4 +13,21 @@ input {
     width: 100%;
     line-height: 16px;
     margin: 10px 0;
+}
+
+
+
+.container{
+    display: flex;
+
+    .section1{
+        width: 50%;
+        .img{
+            width: 100%;
+        }
+    }
+
+    .section2{
+        width: 50%;
+    }
 }
