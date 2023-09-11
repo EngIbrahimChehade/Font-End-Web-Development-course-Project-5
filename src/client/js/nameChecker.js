@@ -1,15 +1,21 @@
 function checkForName(inputText) {
     console.log("::: Running checkForName :::", inputText);
     let names = [
-        "Picard",
+        "IAB_2.0_en",
         "Janeway",
         "Kirk",
         "Archer",
         "Georgiou"
     ]
 
-    if(names.includes(inputText)) {
-        alert("Welcome, Captain!")
+    if(
+        //names.includes(inputText) 
+        inputText == undefined ||
+        inputText == ''
+    
+    ) {
+        alert("the input field cannot be blank!");
+        return;
     }
 }
 
