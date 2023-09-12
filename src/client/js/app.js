@@ -1,3 +1,7 @@
+const apiKeyWeatherbit = "399e6a3d28e34540b603fc88fe1dc77c";
+const apiKeyGeonames = "399e6a3d28e34540b603fc88fe1dc77c";
+const apiKeyPixabay = "39389270-d4f8b3ccba6b9cd3b9605ce10";
+
 function app(event) {
     event.preventDefault()
 
@@ -15,25 +19,49 @@ function app(event) {
 
 
     const formdata = new FormData();
-    formdata.append("key", process.env.API_KEY);
-    formdata.append("txt", "YOUR TEXT HERE");
-    formdata.append("model", formText);  // like IAB_2.0_en
+    formdata.append("key", apiKeyWeatherbit);
+    formdata.append("city", formText);
     
-    const requestOptions = {
-      method: 'POST',
-      body: formdata,
-      redirect: 'follow'
+    let requestOptions = {
+      method: 'GET',
+      //body: formdata,
+      //redirect: 'follow'
     };
     
-    const response = fetch("https://api.meaningcloud.com/deepcategorization-1.0", requestOptions)
+    const response = fetch("http://www.geonames.org/search.html?q="+formText, requestOptions)
       .then(response => ({
-        status: response.status, 
-        body: response.json()
+        country: response.country, 
+        longitude: response.longitude,
+        latitude: response.latitude,
       }))
-      .then(({ status, body }) => document.getElementById('results').innerHTML = "status: "+ status + "body: "+ body) 
+      .then(({ country, longitude, latitude }) => 
+        document.getElementById('country').innerHTML = country, 
+        document.getElementById('longitude').innerHTML = longitude, 
+        document.getElementById('latitude').innerHTML = latitude,) 
       .catch(error => console.log('error', error));
 
 
+      requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+      };
+
+      const response1 = fetch("https://api.weatherbit.io/v2.0/current?city="+formText+"&key="+apiKeyWeatherbit, requestOptions)
+      .then(response => ({
+        temp: response.temp,
+      }))
+      .then(({ temp }) => 
+        document.getElementById('temp').innerHTML = temp) 
+      .catch(error => console.log('error', error));
+
+      var URL = "https://pixabay.com/api/?key=" + apiKeyPixabay + "&q=" + encodeURIComponent('red roses');
+      $.getJSON(URL, function (data) {
+        if (parseInt(data.totalHits) > 0)
+          $.each(data.hits, function (i, hit) { console.log(hit.pageURL); });
+        else
+          console.log('No hits');
+      });
 }
 
 export { app }

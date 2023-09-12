@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Test</title>
-        <link rel="stylesheet" href="/styles/resets.scss">
-        <link rel="stylesheet" href="/styles/base.scss">
-        <link rel="stylesheet" href="/styles/header.scss">
-        <link rel="stylesheet" href="/styles/form.scss">
-        <link rel="stylesheet" href="/styles/footer.scss">
+        <link rel="stylesheet" href="../styles/resets.scss">
+        <link rel="stylesheet" href="../styles/base.scss">
+        <link rel="stylesheet" href="../styles/header.scss">
+        <link rel="stylesheet" href="../styles/form.css">
+        <link rel="stylesheet" href="../styles/footer.scss">
     </head>
 
     <body>
@@ -22,20 +22,73 @@
                 <div class="section1">
                     <img src="/src/client/views/1.jpg" class="img" />
                 </div>
-                <div class="section2"></div>
+                <div class="section2">
+                    <div class="card">
+                        <div>
+                            <span>My trip to: </span>
+                            <span>Paris, France</span>
+                        </div>
+                        <div>
+                            <span>Departing: </span>
+                            <span>01/12/2023</span>
+                        </div>
+                        <div>
+                            <button onclick="alert('save')">save trip</button>
+                            <button onclick="alert('remove')">remove trip</button>
+                        </div>
+                        <p>
+
+                        </p>
+                    </div>
+                    
+                </div>
             </section>
 
 
             <section>
-                <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                <form class="section3" onsubmit="return Client.handleSubmit(event)">
+                    <div>
+                        <div>
+                            <span>My trip to: </span>
+                            <span>
+                                <input id="name" type="text" name="input" value="" onblur="onBlur()" placeholder="Name">
+                            </span>
+                        </div>
+                        <div>
+                            <span>Departing: </span>
+                            <span>
+                                <input id="date" type="text" name="input" value="" onblur="onBlur()" placeholder="Date">
+                            </span>
+                        </div>
+                        
+                        <div>
+                            <input type="submit" name="" value="save" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)">
+                            <input type="submit" name="" value="remove" onclick="alert('remove')">
+                        </div>
+                    </div>
+                    
+                    
                 </form>
             <section>
 
             <section>
                 <strong>Form Results:</strong>
-                <div id="results"></div>
+                <div>
+                    <span>latitude: </span>
+                    <span id="latitude"></span>
+                </div>
+                <div>
+                    <span>longitude: </span>
+                    <span id="longitude"></span>
+                </div>
+                <div>
+                    <span>country: </span>
+                    <span id="country"></span>
+                </div>
+                <div>
+                    <span>temp: </span>
+                    <span id="temp"></span>
+                </div>
             </section>
         </main>
 

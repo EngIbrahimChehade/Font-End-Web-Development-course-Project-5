@@ -1,3 +1,6 @@
+// Setup empty JS object to act as endpoint for all routes
+projectData = [];
+
 var path = require('path')
 const express = require('express')
 const mockAPIResponse = require('./mockAPI.js')
@@ -36,4 +39,33 @@ app.listen(8081, function () {
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
-//
+
+
+
+
+// GET route
+app.get('/getInfo', getInfo);
+
+function getInfo (request, response) {
+  response.send(projectData);
+};
+
+
+
+// POST add city information
+app.post('/addInfo', addInfo);
+
+
+
+function addInfo(req,res){
+
+    newCity = {
+        latitude : req.body.latitude,
+        longitude : req.body.longitude,
+        country : req.body.country
+    }
+
+    projectData.push(newCity);
+    res.send(projectData);
+    console.log(projectData);
+};
